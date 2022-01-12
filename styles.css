@@ -45,8 +45,11 @@ img{
 pre{
     width: 500px;
     margin: auto;
+    margin-bottom: 20px;
     background-color: antiquewhite;
     background-image: linear-gradient(rgba(165,42,42,0),rgba(165,42,42,0.2));
     border: 1px solid black;
     box-shadow: 5px 5px 5px black;
+    padding: 5px;
+    display: none;
 }
