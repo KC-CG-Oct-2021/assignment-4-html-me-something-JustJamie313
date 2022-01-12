@@ -30,6 +30,7 @@ footer{
     color: gray;
     font-size: 12px;
     text-align: center;
+    margin-top: 10px;
 }
 article{
     width: 600px;
@@ -52,4 +53,27 @@ pre{
     box-shadow: 5px 5px 5px black;
     padding: 5px;
     display: none;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+button{
+    background: rgb(200,255,200);
+    border-radius: 100%;
+    border: 2px solid rgb(0,63,0);
+    box-shadow: 2px 2px 5px black;
+    text-shadow: 2px 2px 5px black;
+    font: 48px bolder;
+    margin: 0 10px;
+}
+button:hover{
+    cursor: pointer;
+}
+.clicked{
+    background: rgb(0,63,0);
+    border: 2px solid rgb(200,255,200);
+    box-shadow: 1px 1px 2.5px black;
 }

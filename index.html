@@ -6,17 +6,21 @@
    </head>
    <body>
       <h1 id="mainHeading">KC CoderGirl Original Art Gallery</h1>
-      <main>
-         <article>
-            <header>
-               <h2></h2>
-               <img/>
-               <p id="testP" class='funParagraph'></p>
-               <p id='detailsParagraph'></p>
-            </header>
-            <pre></pre>
-         </article>
-      </main>
+      <div class='container'>
+         <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=17:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
+         <main>
+            <article>
+               <header>
+                  <h2></h2>
+                  <img/>
+                  <p id="testP" class='funParagraph'></p>
+                  <p id='detailsParagraph'></p>
+               </header>
+               <pre></pre>
+            </article>
+         </main>
+         <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex === 17)?galleryIndex=0:galleryIndex+=1;showImage(galleryIndex)'>&gt;</button>
+      </div>
       <footer>
          &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
          <p>All images and poetry are my original works.  All Rights Reserved.</p>
@@ -186,7 +190,8 @@
                pre: ''
             }
          ];
-         let galleryIndex = Math.ceil(Math.random()*gallery.length);
+         let galleryIndex = Math.floor(Math.random()*gallery.length);
+         setInterval(function(){randomizeBackground();},15000);
          showImage(galleryIndex);
          function showImage(index){
             let title = document.querySelector('h2');
@@ -198,13 +203,19 @@
             image.setAttribute('class',gallery[index].class);
             image.setAttribute('src',`./images/${gallery[index].src}`);
             image.setAttribute('alt',gallery[index].alt);
-            artist.innerHTML = gallery[index].artist;
+            artist.innerHTML = `Artist: ${gallery[index].artist}`;
             details.innerHTML = gallery[index].details;
             if(gallery[index].pre !== ''){
                preText.innerHTML = gallery[index].pre;
                preText.style.display = 'block';
+            } else {
+               preText.innerHTML = '';
+               preText.style.display = 'none';
             }
-            
+         }
+         function randomizeBackground(){
+            let body = document.querySelector('body');
+            body.style.background = `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.25)`;
          }
       </script>
    </body>
