@@ -25,23 +25,20 @@ main{
     align-items: center;
     text-align: center;
 }
-article, header, h2, img, p{
-    margin-block-start: 0;
-    margin-block-end: 0;
-}
-article{
-    margin-block-start: 0.83em;
-}
+
 footer{
     color: gray;
     font-size: 12px;
     text-align: center;
 }
 article{
+    width: 600px;
     background-color: skyblue;
     box-shadow: 2px 2px 5px black;
+    margin-top: 20px;
 }
 img{
     border: 1px solid gold;
     outline: 3px solid white;
+    box-shadow: 5px 5px 10px black;
 }
