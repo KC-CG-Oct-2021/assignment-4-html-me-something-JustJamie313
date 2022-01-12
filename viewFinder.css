@@ -1,0 +1,61 @@
+body{
+    background: white;
+}
+.container{
+    display: block;
+    background: black;
+    background-image: url('./images/viewfinder.png');
+    background-size: 780px 565.5px;
+    background-repeat: no-repeat;
+    border-radius: 25%;
+    width: 780px !important;
+    height: 565.5px !important;
+}
+#leftEye, #rightEye{
+    display: block;
+    width: 160px;
+    height: 160px;
+    border: 5px solid black;
+    border-radius: 100%;
+    position: absolute;
+    opacity: 0.20;
+}
+#leftEye{
+    margin-left: 72.5px;
+    margin-top: 237.5px;
+}
+#rightEye{
+    margin-top: 235px;
+    margin-left: 545px;
+
+}
+#leftDisc{
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    transform: rotateZ(45deg);
+    margin-left: 255px;
+    margin-top: 75px;
+    opacity: 0.20;
+}
+#centerDisc{
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    transform: rotateZ(90deg);
+    margin-left: 360px;
+    margin-top: 35px;
+    opacity: 0.20;
+}
+#rightDisc{
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    transform: rotateZ(135deg);
+    margin-left: 465px;
+    margin-top: 73px;
+    opacity: 0.20;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KC CoderGirl Art Gallery - ViewFinder</title>
+        <link rel='stylesheet' type='text/css' href='viewFinder.css'/>
+        <script src='gallery.js'></script>
+    </head>
+    <body>
+        <div class='container' onmousedown='look(event)'>
+            <img id='leftEye'/>
+            <img id='leftDisc'/>
+            <img id='centerDisc'/>
+            <img id='rightDisc'/>
+            <img id='rightEye'/>
+        </div>
+    </body>
+    <script>
+        let url = location.href;
+        let index = Number(url.substring(url.indexOf('=')+1));
+        loadImages(index);
+        function loadImages(index){
+            let leftEye = document.querySelector('#leftEye');
+            let leftDisc = document.querySelector("#leftDisc");
+            let centerDisc = document.querySelector('#centerDisc');
+            let rightDisc = document.querySelector('#rightDisc');
+            let rightEye = document.querySelector('#rightEye');
+            let lDIndex = index;
+            let cdIndex = index;
+            let rdIndex = index;
+
+            leftEye.src = `./images/${gallery[index].src}`;
+            rightEye.src = `./images/${gallery[index].src}`;
+
+            if(index+3 > gallery.length-1){
+                lDIndex = (index+3)-gallery.length;
+            } else {
+                lDIndex = index+3;
+            }
+            leftDisc.src = `./images/${gallery[lDIndex].src}`;
+            if(index+2 > gallery.length-1){
+                cdIndex = index+2-gallery.length;
+            } else {
+                cdIndex = index+2;
+            }
+            centerDisc.src = `./images/${gallery[cdIndex].src}`;
+            if(index+1 > gallery.length-1){
+                rdIndex = index+1-gallery.length;
+            } else {
+                rdIndex = index+1;
+            }
+            rightDisc.src = `./images/${gallery[rdIndex].src}`;
+        }
+        
+        function look(event){
+            console.log(index);
+            switch(event.button){
+                case 0:
+
+                break;
+                case 1:
+                    if(index === gallery.length-1){
+                        index = 0;
+                    } else {
+                        index += 1;  
+                    }
+                    loadImages(index);
+                break;
+            }
+        }
+    </script>
+</html>

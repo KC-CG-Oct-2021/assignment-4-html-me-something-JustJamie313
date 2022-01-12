@@ -77,3 +77,13 @@ button:hover{
     border: 2px solid rgb(200,255,200);
     box-shadow: 1px 1px 2.5px black;
 }
+#viewFinder{
+    width: 50px;
+    display: flex;
+    margin:auto;
+    margin-top: 10px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    float: center;
+}
