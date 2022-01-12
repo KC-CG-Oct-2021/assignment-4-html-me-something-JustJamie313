@@ -38,7 +38,15 @@ article{
     margin-top: 20px;
 }
 img{
-    border: 1px solid gold;
-    outline: 3px solid white;
-    box-shadow: 5px 5px 10px black;
+    border: 5px ridge gold;
+    outline: 10px groove saddlebrown;
+    box-shadow: 15px 15px 20px black;
+}
+pre{
+    width: 500px;
+    margin: auto;
+    background-color: antiquewhite;
+    background-image: linear-gradient(rgba(165,42,42,0),rgba(165,42,42,0.2));
+    border: 1px solid black;
+    box-shadow: 5px 5px 5px black;
 }
