@@ -123,6 +123,10 @@
                         let growStep = (400-currentImageHeight)/20;
                         if(growStep<10){growStep=10};
                         if(currentImageHeight<400){
+                            container.style.backgroundImage = 'unset';
+                            leftDisc.style.display = 'none';
+                            centerDisc.style.display = 'none';
+                            rightDisc.style.display = 'none';
                             currentImageHeight += growStep;
                             currentImageWidth += growStep;
                             if(currentImageHeight>400){currentImageHeight=400};
@@ -161,10 +165,6 @@
                                 rightEye.style.borderRadius = newBorderRadius+'%';
                             }
                         } else {
-                            container.style.backgroundImage = 'unset';
-                            leftDisc.style.display = 'none';
-                            centerDisc.style.display = 'none';
-                            rightDisc.style.display = 'none';
                             leftEye.style.opacity = 1;
                             looking = true;
                             document.querySelector('#view').innerHTML = "Stop Viewing";
