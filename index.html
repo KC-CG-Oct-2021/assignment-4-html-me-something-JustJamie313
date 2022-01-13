@@ -20,7 +20,7 @@
                <pre></pre>
             </article>
          </main>
-         <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex === 17)?galleryIndex=0:galleryIndex+=1;showImage(galleryIndex)'>&gt;</button>
+         <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex === gallery.length-1)?galleryIndex=0:galleryIndex+=1;showImage(galleryIndex)'>&gt;</button>
       </div>
       <img id='viewFinder' src='./images/viewFinder.png' alt='image of viewfinder toy' onclick='window.location=`./viewfinder.html?index=${galleryIndex}`'/>
       <footer>

@@ -61,13 +61,15 @@ pre{
     justify-content: center;
 }
 button{
-    background: rgb(200,255,200);
-    border-radius: 100%;
-    border: 2px solid rgb(0,63,0);
+    background: rgb(150,150,255);
+    width: 75px;
+    border-radius: 25%;
+    border: 2px solid rgb(0,0,63);
     box-shadow: 2px 2px 5px black;
-    text-shadow: 2px 2px 5px black;
+    text-shadow: 5px 5px 5px black;
     font: 48px bolder;
     margin: 0 10px;
+    color: rgb(81, 81, 107);
 }
 button:hover{
     cursor: pointer;
@@ -86,4 +88,7 @@ button:hover{
     box-shadow: none;
     outline: none;
     float: center;
+}
+#viewFinder:hover{
+    cursor: pointer;
 }
