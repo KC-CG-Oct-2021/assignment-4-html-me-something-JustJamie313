@@ -44,6 +44,7 @@
     <script>
         let url = location.href;
         let index = Number(url.substring(url.indexOf('=')+1));
+        if(!index){index=Math.floor(Math.random()*gallery.length);}
         let looking = false;
         let leftEye = document.querySelector('#leftEye');
         let leftDisc = document.querySelector("#leftDisc");
@@ -88,10 +89,13 @@
             let leftEyeLeft = leftEye.style.left;
             let rightEyeLeft = rightEye.style.left;
             let leftEyeTop = leftEye.style.top;
+            let leftEyeOpacity = leftEye.style.opacity;
+            let rightEyeOpacity = rightEye.style.opacity;
             let vFOpacity = viewFinderFrame.style.opacity;
             let leftPos = 200;
             let topPos = 100;
             let opacityStep = 1/20;
+            let eyeOpacityStep = (1-0.25)/20;
             
             let borderStep = (100-25)/20;
             if(!leftEyeLeft){
@@ -120,6 +124,16 @@
                 rightEyeTop = Number(rightEyeTop.replace('px',''));
             }
             let rightTopStep = (243-topPos)/20;
+            if(!leftEyeOpacity){
+                leftEyeOpacity = 0.25;
+            } else {
+                leftEyeOpacity = Number(leftEyeOpacity);
+            }
+            if(!rightEyeOpacity){
+                rightEyeOpacity = 0.25;
+            } else {
+                rightEyeOpacity = Number(rightEyeOpacity);
+            }
             if(!vFOpacity){
                 vFOpacity = 1;
             } else {
@@ -172,18 +186,26 @@
                                 leftEye.style.borderRadius = newBorderRadius+'%';
                                 rightEye.style.borderRadius = newBorderRadius+'%';
                             }
+                            if(leftEyeOpacity < 1){
+                                let newLEO = leftEyeOpacity+eyeOpacityStep;
+                                if(newLEO>1){newLEO=1;}
+                                leftEye.style.opacity = newLEO;
+                            }
+                            if(rightEyeOpacity < 1){
+                                let newREO = rightEyeOpacity+eyeOpacityStep;
+                                if(newREO>1){newREO=1;}
+                                rightEye.style.opacity = newREO;
+                            }
                             if(vFOpacity > 0){
                                 let newOpacity = vFOpacity-opacityStep;
                                 if(newOpacity<0){newOpacity=0;}
                                 viewFinderFrame.style.opacity = newOpacity;
                             }
                         } else {
-                            leftEye.style.opacity = 1;
                             looking = true;
                             document.querySelector('#view').innerHTML = "Stop Viewing";
                         }
                     } else {
-                        leftEye.style.opacity = 0.25;
                         let shrinkStep = (currentImageHeight-160)/20;
                         if(shrinkStep<10){shrinkStep=10;}
                         if(currentImageHeight>160){
@@ -224,6 +246,16 @@
                                 if(newBorderRadius>100){newBorderRadius=100;}
                                 leftEye.style.borderRadius = newBorderRadius+'%';
                                 rightEye.style.borderRadius = newBorderRadius+'%';
+                            }
+                            if(leftEyeOpacity > 0.25){
+                                let newLEO = leftEyeOpacity-eyeOpacityStep;
+                                if(newLEO<0.25){newLEO=0.25;}
+                                leftEye.style.opacity = newLEO;
+                            }
+                            if(rightEyeOpacity > 0.25){
+                                let newREO = rightEyeOpacity-eyeOpacityStep;
+                                if(newREO<0.25){newREO=0.25;}
+                                rightEye.style.opacity = newREO;
                             }
                             if(vFOpacity < 1){
                                 let newOpacity = vFOpacity+opacityStep;
