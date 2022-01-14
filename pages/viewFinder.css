@@ -81,6 +81,7 @@ p{
     margin: 0px;
     text-align: left;
     padding-left: 20px;
+    word-wrap: normal;
 }
 h5{
     margin: 0px;
