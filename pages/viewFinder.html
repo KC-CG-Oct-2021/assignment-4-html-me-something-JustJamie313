@@ -16,7 +16,7 @@
         </div>
         <div class='buttonBox'>
             <button id='view' onclick='look(0);'>View</button>
-            <button id='advance' onclick='if(index == gallery.length-1){index=0;}else{index += 1;}loadImages(index);'>Next</button>
+            <button id='advance' onclick='look(1);'>Next</button>
         </div>
         <div class="controls">
             <h5>Keyboard Controls</h5>
@@ -42,6 +42,13 @@
          </footer>
     </body>
     <script>
+        document.querySelector('.container').addEventListener('touchstart',function(e){
+            if(e.touches.length>1){
+                look(1);
+            } else {
+                look(0);
+            }
+        })
         let url = location.href;
         let index = Number(url.substring(url.indexOf('=')+1));
         if(!index){index=Math.floor(Math.random()*gallery.length);}
