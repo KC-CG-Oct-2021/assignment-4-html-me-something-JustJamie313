@@ -90,10 +90,10 @@ h5{
 button{
     background: rgb(150,150,255);
     width: 150px;
-    border-radius: 50%;
+    border-radius: 25px;
     border: 2px solid rgb(0,0,63);
     box-shadow: 2px 2px 5px black;
-    font: 16px bolder;
+    font: 24px bolder;
     margin: 0 10px;
     color: rgb(81, 81, 107);
 }
