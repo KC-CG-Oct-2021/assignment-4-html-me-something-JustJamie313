@@ -6,6 +6,7 @@
         <script src='../gallery.js'></script>
     </head>
     <body onkeydown='if(event.key === "ArrowUp"){look(0);}if(event.key === "ArrowRight"){look(1);}'>
+        <div class="containerBG"></div>
         <div class='container' onmousedown='look(event.button)'>
             <img id='leftEye'/>
             <img id='leftDisc'/>
@@ -49,6 +50,7 @@
         let centerDisc = document.querySelector('#centerDisc');
         let rightDisc = document.querySelector('#rightDisc');
         let rightEye = document.querySelector('#rightEye');
+        let viewFinderFrame = document.querySelector('.containerBG');
         let borderRadius = 100;
         
         loadImages(index);
@@ -81,14 +83,15 @@
         }
         
         function look(button){
-            let container = document.querySelector('.container');
             let currentImageHeight = leftEye.height;
             let currentImageWidth = leftEye.width;
             let leftEyeLeft = leftEye.style.left;
             let rightEyeLeft = rightEye.style.left;
             let leftEyeTop = leftEye.style.top;
+            let vFOpacity = viewFinderFrame.style.opacity;
             let leftPos = 200;
             let topPos = 100;
+            let opacityStep = 1/20;
             
             let borderStep = (100-25)/20;
             if(!leftEyeLeft){
@@ -117,19 +120,24 @@
                 rightEyeTop = Number(rightEyeTop.replace('px',''));
             }
             let rightTopStep = (243-topPos)/20;
+            if(!vFOpacity){
+                vFOpacity = 1;
+            } else {
+                vFOpacity = Number(vFOpacity);
+            }
             switch(button){
                 case 0:
                     if(looking === false){
                         let growStep = (400-currentImageHeight)/20;
                         if(growStep<10){growStep=10};
                         if(currentImageHeight<400){
-                            container.style.backgroundImage = 'unset';
                             leftDisc.style.display = 'none';
                             centerDisc.style.display = 'none';
                             rightDisc.style.display = 'none';
                             currentImageHeight += growStep;
                             currentImageWidth += growStep;
                             if(currentImageHeight>400){currentImageHeight=400};
+                            if(currentImageWidth>400){currentImageWidth=400};
                             leftEye.style.height = currentImageHeight+'px';
                             rightEye.style.height = currentImageHeight+'px';
                             leftEye.style.width = currentImageWidth+'px';
@@ -164,6 +172,11 @@
                                 leftEye.style.borderRadius = newBorderRadius+'%';
                                 rightEye.style.borderRadius = newBorderRadius+'%';
                             }
+                            if(vFOpacity > 0){
+                                let newOpacity = vFOpacity-opacityStep;
+                                if(newOpacity<0){newOpacity=0;}
+                                viewFinderFrame.style.opacity = newOpacity;
+                            }
                         } else {
                             leftEye.style.opacity = 1;
                             looking = true;
@@ -177,6 +190,7 @@
                             currentImageHeight -= shrinkStep;
                             currentImageWidth -= shrinkStep;
                             if(currentImageHeight<160){currentImageHeight=160;}
+                            if(currentImageWidth<160){currentImageWidth=160;}
                             leftEye.style.height = currentImageHeight+'px';
                             rightEye.style.height = currentImageHeight+'px';
                             leftEye.style.width = currentImageWidth+'px';
@@ -211,8 +225,12 @@
                                 leftEye.style.borderRadius = newBorderRadius+'%';
                                 rightEye.style.borderRadius = newBorderRadius+'%';
                             }
+                            if(vFOpacity < 1){
+                                let newOpacity = vFOpacity+opacityStep;
+                                if(newOpacity>1){newOpacity=1;}
+                                viewFinderFrame.style.opacity = newOpacity;
+                            }
                         } else {
-                            container.style.backgroundImage = "url('../images/viewfinder.png')";
                             leftDisc.style.display = 'block';
                             centerDisc.style.display = 'block';
                             rightDisc.style.display = 'block';

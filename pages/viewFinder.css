@@ -5,12 +5,21 @@ body{
 .container{
     display: block;
     background: black;
+    border-radius: 25%;
+    width: 780px !important;
+    height: 565.5px !important;
+}
+.containerBG{
+    display: block;
     background-image: url('../images/viewfinder.png');
     background-size: 780px 565.5px;
     background-repeat: no-repeat;
     border-radius: 25%;
     width: 780px !important;
     height: 565.5px !important;
+    position: absolute;
+    opacity: 1;
+    pointer-events: none;
 }
 #leftEye, #rightEye{
     display: flex;
