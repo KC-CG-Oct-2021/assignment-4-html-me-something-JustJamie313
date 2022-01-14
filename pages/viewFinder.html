@@ -42,6 +42,8 @@
          </footer>
     </body>
     <script>
+        document.querySelector('.controls').innerHTML += 'ontouchstart'+window.ontouchstart;
+        document.querySelector('.controls').innerHTML += 'navigator touch points'+navigator.maxTouchPoints;
         document.querySelector('.container').addEventListener('touchstart',function(e){
             if(e.touches.length>1){
                 look(1);
