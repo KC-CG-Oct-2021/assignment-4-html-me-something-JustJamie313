@@ -47,21 +47,11 @@
          </footer>
     </body>
     <script>
-        let t = false;
         document.querySelector('.container').addEventListener('touchstart',function(e){
             if(e.touches.length>1){
                 look(1);
-                t = true;
-                setTimeout(function(){
-                    t = false;
-                },1000);
             } else {
-                setTimeout(function(){
-                    if(t=false){
-                        look(0);
-                        t = false;
-                    }
-                },250);
+                look(0);
             }
         })
         let url = location.href;
