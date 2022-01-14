@@ -7,7 +7,7 @@
     </head>
     <body onkeydown='if(event.key === "ArrowUp"){look(0);}if(event.key === "ArrowRight"){look(1);}'>
         <div class="containerBG"></div>
-        <div class='container' onmousedown='look(event.button)'>
+        <div class='container' onmousedown='if(window.ontouchstart==undefined&&navigator.maxTouchPoints==0){look(event.button)}'>
             <img id='leftEye'/>
             <img id='leftDisc'/>
             <img id='centerDisc'/>
@@ -42,8 +42,6 @@
          </footer>
     </body>
     <script>
-        document.querySelector('.controls').innerHTML += 'ontouchstart'+window.ontouchstart;
-        document.querySelector('.controls').innerHTML += 'navigator touch points'+navigator.maxTouchPoints;
         document.querySelector('.container').addEventListener('touchstart',function(e){
             if(e.touches.length>1){
                 look(1);
