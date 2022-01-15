@@ -160,7 +160,7 @@ let gallery = [
        artist: 'Jamie Miller',
        details: `&quot;First Day of School&quot; is an 8X10 pencil sketch.`,
        pre: ''
-    }
+    },
     {
       name: 'Play at Second',
       class: 'portrait',
@@ -169,7 +169,7 @@ let gallery = [
       artist: 'Jamie Miller',
       details: `&quot;Play at Second&quot; is an 8X10 pencil sketch.`,
       pre: ''
-   }
+   },
    {
       name: 'Strawberry',
       class: 'portrait',
