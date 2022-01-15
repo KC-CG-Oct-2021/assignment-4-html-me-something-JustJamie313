@@ -161,4 +161,22 @@ let gallery = [
        details: `&quot;First Day of School&quot; is an 8X10 pencil sketch.`,
        pre: ''
     }
+    {
+      name: 'Play at Second',
+      class: 'portrait',
+      src: '19.jpg',
+      alt: 'Pencil sketch of softball player.',
+      artist: 'Jamie Miller',
+      details: `&quot;Play at Second&quot; is an 8X10 pencil sketch.`,
+      pre: ''
+   }
+   {
+      name: 'Strawberry',
+      class: 'portrait',
+      src: '20.jpg',
+      alt: 'Painting of strawberry.',
+      artist: 'Jamie Miller',
+      details: `&quot;Strawberry&quot; is an 9X12 acrylic on paper painting.`,
+      pre: ''
+   }
  ];
