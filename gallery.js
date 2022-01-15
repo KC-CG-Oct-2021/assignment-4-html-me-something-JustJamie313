@@ -96,7 +96,7 @@ let gallery = [
        alt: 'Pencil sketch of a marionette.',
        artist: 'Jamie Miller',
        details: `&quot;Puppet on a String&quot; is a 5x8 pencil sketch.  It is accompanied by a poem of the same name.`,
-       pre: '<h3>Puppet on a String</h3>\nA feeling of control\nis what I really need\nInstead you take my soul\nNo dignity for me\n\nYou make me dance to music\nWith no rhythm or no beat\nYou build my up with praise\nTo knock me off my feet\n\nYour puppet on a string\nfulfilling your hearts desire\nthat\'s all I\'ll ever be\nhanging from this wire\n\nLike Pinocchio and his dreams\nof becoming a little boy\nI need to be more in life\nthan someone\'s little toy.',
+       pre: '<h3>Puppet on a String</h3>\nA feeling of control\nis what I really need\nInstead you take my soul\nNo dignity for me\n\nYou make me dance to music\nWith no rhythm or no beat\nYou build me up with praise\nTo knock me off my feet\n\nYour puppet on a string\nfulfilling your hearts desire\nthat\'s all I\'ll ever be\nhanging from this wire\n\nLike Pinocchio and his dreams\nof becoming a little boy\nI need to be more in life\nthan someone\'s little toy.',
     },
     {
        name: 'The Island',
