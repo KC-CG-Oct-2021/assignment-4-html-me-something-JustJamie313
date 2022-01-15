@@ -8,7 +8,7 @@
    <body>
       <h1 id="mainHeading">KC CoderGirl Original Art Gallery</h1>
       <div class='container'>
-         <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=17:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
+         <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=gallery.length-1:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
          <main>
             <article>
                <header>
