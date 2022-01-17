@@ -73,6 +73,7 @@ button{
     font: 48px bolder;
     margin: 0 10px;
     color: rgb(81, 81, 107);
+    margin-top: 200px;
 }
 button:hover{
     cursor: pointer;
