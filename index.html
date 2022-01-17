@@ -14,7 +14,7 @@
             <article>
                <header>
                   <h2></h2>
-                  <img/>
+                  <img id='galleryImage'/>
                   <p id="testP" class='funParagraph'></p>
                   <p id='detailsParagraph'></p>
                </header>
@@ -35,7 +35,7 @@
          showImage(galleryIndex);
          function showImage(index){
             let title = document.querySelector('h2');
-            let image = document.querySelector('img');
+            let image = document.querySelector('#galleryImage');
             let artist = document.querySelector('#testP');
             let details = document.querySelector('#detailsParagraph');
             let preText = document.querySelector('pre');
