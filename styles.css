@@ -16,6 +16,9 @@ body{
     width: 300px;
 }
 h1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     width: 500px;
     margin: auto;
 }
@@ -38,7 +41,7 @@ article{
     box-shadow: 2px 2px 5px black;
     margin-top: 20px;
 }
-img{
+#galleryImage{
     border: 5px ridge gold;
     outline: 10px groove saddlebrown;
     box-shadow: 15px 15px 20px black;
@@ -91,4 +94,9 @@ button:hover{
 }
 #viewFinder:hover{
     cursor: pointer;
+}
+#kccg{
+    display: inline-block;
+    width: 200px;
+    margin-right: 10px;
 }
