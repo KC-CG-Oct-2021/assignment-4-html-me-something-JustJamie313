@@ -43,18 +43,20 @@
         </div>
         
         <footer>
-            <p>Version: 2.1</p>
+            <p>Version: 2.2</p>
             &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
             <p>All images and poetry are my original works.  All Rights Reserved.</p>
          </footer>
     </body>
     <script>
-        document.querySelector('.container').addEventListener('touchend',function(e){
-            if(e.touches.length>1){
-                look(1);
-                return;
-            } else {
-                look(0);
+        document.querySelector('.container').addEventListener('touchstart',function(e){
+            switch(e.touches.length){
+                case 1:
+                    look(0);
+                break;
+                default:
+                    look(1);
+                break;
             }
         })
         let index = Number(location.href.substring(location.href.indexOf('=')+1));
