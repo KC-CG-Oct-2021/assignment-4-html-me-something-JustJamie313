@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>KC CoderGirl Art Gallery - ViewFinder</title>
         <link rel='stylesheet' type='text/css' href='viewFinder.css'/>
         <link rel='icon' type='image/x-icon' href='../images/viewfinder.png'/>
@@ -45,7 +47,7 @@
         </div>
         
         <footer>
-            <p>Version: 2.10</p>
+            <p>Version: 2.11</p>
             &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
             <p>All images and poetry are my original works.  All Rights Reserved.</p>
          </footer>
@@ -72,10 +74,15 @@
         loadImages(index);
         function loadImages(index){
             discs[0].src = `../images/${index+3>gallery.length-1?gallery[index+3-(gallery.length)].src:gallery[index+3].src}`;
+            discs[0].alt = `../images/${index+3>gallery.length-1?gallery[index+3-(gallery.length)].alt:gallery[index+3].alt}`;
             discs[1].src = `../images/${index+2>gallery.length-1?gallery[index+2-(gallery.length)].src:gallery[index+2].src}`;
+            discs[1].alt = `../images/${index+2>gallery.length-1?gallery[index+2-(gallery.length)].alt:gallery[index+2].alt}`;
             discs[2].src = `../images/${index+1>gallery.length-1?gallery[index+1-(gallery.length)].src:gallery[index+1].src}`;
+            discs[2].alt = `../images/${index+1>gallery.length-1?gallery[index+1-(gallery.length)].alt:gallery[index+1].alt}`;
             leftEye.src = `../images/${gallery[index].src}`;
+            leftEye.alt = `../images/${gallery[index].alt}`;
             rightEye.src = `../images/${gallery[index].src}`;
+            rightEye.alt = `../images/${gallery[index].alt}`;
         }
         function look(button){
             switch(button){
