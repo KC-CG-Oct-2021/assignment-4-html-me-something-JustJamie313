@@ -76,10 +76,12 @@ p{
     text-align: left;
     padding-left: 20px;
     word-wrap: normal;
+    font-size: 14px;
 }
 h5{
     margin: 0px;
     margin-top: 10px;
+    font-size: 18px;
 }
 button{
     background: rgb(150,150,255);
