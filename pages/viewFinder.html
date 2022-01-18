@@ -18,8 +18,10 @@
         <div class='buttonBox'>
             <button id='view' onclick='look(0);'>View</button>
             <button id='advance' onclick='look(1);'>Next</button>
+            <button id='help' onclick='showControls();'>?</button>
         </div>
         <div class="controls">
+            <span class='close' onclick='showControls();' onmousedown='this.style.boxShadow="none";' onmouseout='this.style.boxShadow="0px 0px 5px black"'>X</span>
             <h5>Touch-Screen Controls</h5>
             <p>
                 Touch the ViewFinder with <b>ONE FINGER</b> to View or Stop Viewing the image(or use on-screen controls).<br/>
@@ -43,7 +45,7 @@
         </div>
         
         <footer>
-            <p>Version: 2.6</p>
+            <p>Version: 2.7</p>
             &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
             <p>All images and poetry are my original works.  All Rights Reserved.</p>
          </footer>
@@ -67,7 +69,6 @@
         let leftEye = document.querySelector('#leftEye');
         let rightEye = document.querySelector('#rightEye');
         let discs = document.querySelectorAll('.disc');
-        
         loadImages(index);
         function loadImages(index){
             discs[0].src = `../images/${index+3>gallery.length-1?gallery[index+3-(gallery.length)].src:gallery[index+3].src}`;
@@ -111,6 +112,15 @@
             } else {
                 button.innerHTML = "View";
             }
+        }
+        function showControls(){
+            let controls = document.querySelector('.controls');
+            if(controls.style.display === 'none'){
+                controls.style.display = 'flex';
+            } else {
+                controls.style.display = 'none';
+            }
+            
         }
     </script>
 </html>
