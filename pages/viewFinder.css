@@ -61,16 +61,6 @@ body{
     left: 472px;
     top: 80px;
 }
-footer{
-    color: gray;
-    font-size: 12px;
-    text-align: center;
-    margin-top: 10px;
-    width: 780px;
-}
-footer p{
-    text-align: center;
-}
 p{
     margin: 0px;
     text-align: left;
@@ -83,6 +73,18 @@ h5{
     margin-top: 10px;
     font-size: 18px;
 }
+footer{
+    color: gray;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+    width: 780px;
+}
+footer p{
+    text-align: center;
+    font-size: 12px;
+}
+
 button{
     background: rgb(150,150,255);
     width: 150px;
