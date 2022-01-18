@@ -7,13 +7,13 @@
         <script src='../gallery.js'></script>
     </head>
     <body onkeydown='if(event.key === "ArrowUp"){look(0);}if(event.key === "ArrowRight"){look(1);}'>
-        <div class="containerBG"></div>
+        <div class='containerBG fade transparent'></div>
         <div class='container' onmousedown='if(window.ontouchend==undefined&&navigator.maxTouchPoints==0){look(event.button)}'>
-            <img id='leftEye'/>
-            <img id='leftDisc'/>
-            <img id='centerDisc'/>
-            <img id='rightDisc'/>
-            <img id='rightEye'/>
+            <img id='leftEye' class='fade full'/>
+            <img id='leftDisc' class='disc fade transparent'/>
+            <img id='centerDisc' class='disc fade transparent'/>
+            <img id='rightDisc' class='disc fade transparent'/>
+            <img id='rightEye' class='fade full'/>
         </div>
         <div class='buttonBox'>
             <button id='view' onclick='look(0);'>View</button>
@@ -43,256 +43,67 @@
         </div>
         
         <footer>
-            <p>Version: 1.0</p>
+            <p>Version: 2.0</p>
             &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
             <p>All images and poetry are my original works.  All Rights Reserved.</p>
          </footer>
     </body>
     <script>
-        document.querySelector('.container').addEventListener('touchstart',function(e){
+        document.querySelector('.container').addEventListener('touchend',function(e){
             if(e.touches.length>1){
                 look(1);
             } else {
                 look(0);
             }
         })
-        let url = location.href;
-        let index = Number(url.substring(url.indexOf('=')+1));
+        let index = Number(location.href.substring(location.href.indexOf('=')+1));
         if(!index){index=Math.floor(Math.random()*gallery.length);}
-        let looking = false;
         let leftEye = document.querySelector('#leftEye');
-        let leftDisc = document.querySelector("#leftDisc");
-        let centerDisc = document.querySelector('#centerDisc');
-        let rightDisc = document.querySelector('#rightDisc');
         let rightEye = document.querySelector('#rightEye');
-        let viewFinderFrame = document.querySelector('.containerBG');
-        let borderRadius = 100;
+        let discs = document.querySelectorAll('.disc');
         
         loadImages(index);
         function loadImages(index){
-            let lDIndex = index;
-            let cdIndex = index;
-            let rdIndex = index;
-
+            discs[0].src = `../images/${index+3>gallery.length-1?gallery[index+3-(gallery.length)].src:gallery[index+3].src}`;
+            discs[1].src = `../images/${index+2>gallery.length-1?gallery[index+2-(gallery.length)].src:gallery[index+2].src}`;
+            discs[2].src = `../images/${index+1>gallery.length-1?gallery[index+1-(gallery.length)].src:gallery[index+1].src}`;
             leftEye.src = `../images/${gallery[index].src}`;
             rightEye.src = `../images/${gallery[index].src}`;
-
-            if(index+3 > gallery.length-1){
-                lDIndex = (index+3)-gallery.length;
-            } else {
-                lDIndex = index+3;
-            }
-            leftDisc.src = `../images/${gallery[lDIndex].src}`;
-            if(index+2 > gallery.length-1){
-                cdIndex = index+2-gallery.length;
-            } else {
-                cdIndex = index+2;
-            }
-            centerDisc.src = `../images/${gallery[cdIndex].src}`;
-            if(index+1 > gallery.length-1){
-                rdIndex = index+1-gallery.length;
-            } else {
-                rdIndex = index+1;
-            }
-            rightDisc.src = `../images/${gallery[rdIndex].src}`;
         }
-        
         function look(button){
-            let currentImageHeight = leftEye.height;
-            let currentImageWidth = leftEye.width;
-            let leftEyeLeft = leftEye.style.left;
-            let rightEyeLeft = rightEye.style.left;
-            let leftEyeTop = leftEye.style.top;
-            let leftEyeOpacity = leftEye.style.opacity;
-            let rightEyeOpacity = rightEye.style.opacity;
-            let vFOpacity = viewFinderFrame.style.opacity;
-            let leftPos = 200;
-            let topPos = 100;
-            let opacityStep = 1/20;
-            let eyeOpacityStep = (1-0.25)/20;
-            
-            let borderStep = (100-25)/20;
-            if(!leftEyeLeft){
-               leftEyeLeft = 77;
-            } else {
-                leftEyeLeft = Number(leftEyeLeft.replace('px',''));
-            }
-            let leftStep = (leftPos-77)/20;
-            if(!rightEyeLeft){
-                rightEyeLeft = 547;
-            } else {
-                rightEyeLeft = Number(rightEyeLeft.replace('px',''));
-            }
-            let rightStep = (547-leftPos)/20;
-            
-            if(!leftEyeTop){
-                leftEyeTop = 242;
-            } else {
-                leftEyeTop = Number(leftEyeTop.replace('px',''));
-            }
-            let leftTopStep = (242-topPos)/20;
-            let rightEyeTop = rightEye.style.top;
-            if(!rightEyeTop){
-                rightEyeTop = 243;
-            } else {
-                rightEyeTop = Number(rightEyeTop.replace('px',''));
-            }
-            let rightTopStep = (243-topPos)/20;
-            if(!leftEyeOpacity){
-                leftEyeOpacity = 0.25;
-            } else {
-                leftEyeOpacity = Number(leftEyeOpacity);
-            }
-            if(!rightEyeOpacity){
-                rightEyeOpacity = 0.25;
-            } else {
-                rightEyeOpacity = Number(rightEyeOpacity);
-            }
-            if(!vFOpacity){
-                vFOpacity = 1;
-            } else {
-                vFOpacity = Number(vFOpacity);
-            }
             switch(button){
                 case 0:
-                    if(looking === false){
-                        let growStep = (400-currentImageHeight)/20;
-                        if(growStep<10){growStep=10};
-                        if(currentImageHeight<400){
-                            leftDisc.style.display = 'none';
-                            centerDisc.style.display = 'none';
-                            rightDisc.style.display = 'none';
-                            currentImageHeight += growStep;
-                            currentImageWidth += growStep;
-                            if(currentImageHeight>400){currentImageHeight=400};
-                            if(currentImageWidth>400){currentImageWidth=400};
-                            leftEye.style.height = currentImageHeight+'px';
-                            rightEye.style.height = currentImageHeight+'px';
-                            leftEye.style.width = currentImageWidth+'px';
-                            rightEye.style.width = currentImageWidth+'px';
-                            setTimeout(function(){
-                                look(0);
-                            },50);
-                            if(leftEyeLeft < leftPos){
-                                let newLeft = leftEyeLeft+leftStep;
-                                if(newLeft>leftPos){newLeft=leftPos;}
-                                leftEye.style.left = newLeft+'px';
-                            }
-                            if(rightEyeLeft > leftPos){
-                                let newRight = rightEyeLeft-rightStep;
-                                if(newRight<leftPos){newRight=leftPos;}
-                                rightEye.style.left = newRight+'px';
-                            }
-                            if(leftEyeTop > topPos){
-                                let newLeftTop = leftEyeTop-leftTopStep;
-                                if(newLeftTop<topPos){newLeftTop=topPos;}
-                                leftEye.style.top = newLeftTop+'px';
-                            }
-                            if(rightEyeTop > topPos){
-                                let newRightTop = rightEyeTop - rightTopStep;
-                                if(newRightTop<topPos){newRightTop=topPos;}
-                                rightEye.style.top = newRightTop+'px';
-                            }
-                            if(borderRadius>25){
-                                let newBorderRadius = borderRadius - borderStep;
-                                borderRadius -= borderStep;
-                                if(newBorderRadius<25){newBorderRadius=25;}
-                                leftEye.style.borderRadius = newBorderRadius+'%';
-                                rightEye.style.borderRadius = newBorderRadius+'%';
-                            }
-                            if(leftEyeOpacity < 1){
-                                let newLEO = leftEyeOpacity+eyeOpacityStep;
-                                if(newLEO>1){newLEO=1;}
-                                leftEye.style.opacity = newLEO;
-                            }
-                            if(rightEyeOpacity < 1){
-                                let newREO = rightEyeOpacity+eyeOpacityStep;
-                                if(newREO>1){newREO=1;}
-                                rightEye.style.opacity = newREO;
-                            }
-                            if(vFOpacity > 0){
-                                let newOpacity = vFOpacity-opacityStep;
-                                if(newOpacity<0){newOpacity=0;}
-                                viewFinderFrame.style.opacity = newOpacity;
-                            }
-                        } else {
-                            looking = true;
-                            document.querySelector('#view').innerHTML = "Stop Viewing";
-                        }
-                    } else {
-                        let shrinkStep = (currentImageHeight-160)/20;
-                        if(shrinkStep<10){shrinkStep=10;}
-                        if(currentImageHeight>160){
-                            currentImageHeight -= shrinkStep;
-                            currentImageWidth -= shrinkStep;
-                            if(currentImageHeight<160){currentImageHeight=160;}
-                            if(currentImageWidth<160){currentImageWidth=160;}
-                            leftEye.style.height = currentImageHeight+'px';
-                            rightEye.style.height = currentImageHeight+'px';
-                            leftEye.style.width = currentImageWidth+'px';
-                            rightEye.style.width = currentImageWidth+'px';
-                            setTimeout(function(){
-                                look(0);
-                            },50);
-                            if(leftEyeLeft > 77){
-                                let newLeft = leftEyeLeft-leftStep;
-                                if(newLeft<77){newLeft=77;}
-                                leftEye.style.left = newLeft+'px';
-                            }
-                            if(rightEyeLeft < 547){
-                                let newRight = rightEyeLeft+rightStep;
-                                if(newRight>547){newRight=547;}
-                                rightEye.style.left = newRight+'px';
-                            }
-                            if(leftEyeTop < 242){
-                                let newLeftTop = leftEyeTop+leftTopStep;
-                                if(newLeftTop>242){newLeftTop=242;}
-                                leftEye.style.top = newLeftTop+'px';
-                            }
-                            if(rightEyeTop < 243){
-                                let newRightTop = rightEyeTop + rightTopStep;
-                                if(newRightTop>243){newRightTop=243;}
-                                rightEye.style.top = newRightTop+'px';
-                            }
-                            if(borderRadius<100){
-                                let newBorderRadius = borderRadius + borderStep;
-                                borderRadius += borderStep;
-                                if(newBorderRadius>100){newBorderRadius=100;}
-                                leftEye.style.borderRadius = newBorderRadius+'%';
-                                rightEye.style.borderRadius = newBorderRadius+'%';
-                            }
-                            if(leftEyeOpacity > 0.25){
-                                let newLEO = leftEyeOpacity-eyeOpacityStep;
-                                if(newLEO<0.25){newLEO=0.25;}
-                                leftEye.style.opacity = newLEO;
-                            }
-                            if(rightEyeOpacity > 0.25){
-                                let newREO = rightEyeOpacity-eyeOpacityStep;
-                                if(newREO<0.25){newREO=0.25;}
-                                rightEye.style.opacity = newREO;
-                            }
-                            if(vFOpacity < 1){
-                                let newOpacity = vFOpacity+opacityStep;
-                                if(newOpacity>1){newOpacity=1;}
-                                viewFinderFrame.style.opacity = newOpacity;
-                            }
-                        } else {
-                            leftDisc.style.display = 'block';
-                            centerDisc.style.display = 'block';
-                            rightDisc.style.display = 'block';
-                            looking = false;
-                            document.querySelector('#view').innerHTML = "View";
-                        }
-                    }
+                    runFade();
+                    changeButton();
                 break;
                 case 1:
-                    if(index === gallery.length-1){
-                        index = 0;
-                    } else {
-                        index += 1;  
-                    }
-                    loadImages(index);
+                    changePicture();
                 break;
+            }
+        }
+        function runFade(){
+            let els = document.querySelectorAll('.fade');
+            for(let a=0;a<els.length;a++){
+                els[a].style.animationPlayState = 'running';
+                els[a].addEventListener('animationiteration',()=>{
+                    els[a].style.animationPlayState = 'paused';
+                });
+            }
+        }
+        function changePicture(){
+            if(index === gallery.length -1){
+                index = 0;
+            } else {
+                index++;
+            }
+            loadImages(index);
+        }
+        function changeButton(){
+            let button = document.querySelector('#view');
+            if(button.innerHTML==="View"){
+                button.innerHTML = "Stop Viewing";
+            } else {
+                button.innerHTML = "View";
             }
         }
     </script>

@@ -38,35 +38,28 @@ body{
     top: 243px;
     left: 547px;
 }
-#leftDisc{
+.disc{
     display: block;
     width: 70px;
     height: 70px;
     position: absolute;
-    transform: rotateZ(45deg);
-    margin-left: 255px;
-    margin-top: 75px;
     opacity: 0.25;
+}
+#leftDisc{
+    transform: rotateZ(45deg);
+    left: 263px;
+    top: 83px;
+    
 }
 #centerDisc{
-    display: block;
-    width: 70px;
-    height: 70px;
-    position: absolute;
     transform: rotateZ(90deg);
-    margin-left: 360px;
-    margin-top: 35px;
-    opacity: 0.25;
+    left: 370px;
+    top: 43px;
 }
 #rightDisc{
-    display: block;
-    width: 70px;
-    height: 70px;
-    position: absolute;
     transform: rotateZ(135deg);
-    margin-left: 465px;
-    margin-top: 73px;
-    opacity: 0.25;
+    left: 472px;
+    top: 80px;
 }
 footer{
     color: gray;
@@ -112,4 +105,32 @@ button:hover{
     flex-direction: column;
     align-items: center;
     width: 780px;
+}
+.fade{
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate;
+    animation-play-state: paused;
+}
+.full{
+    animation-name: transformEyes;
+}
+.transparent{
+    animation-name: fadeToTransparent;
+}
+@keyframes transformEyes{
+    to{
+        opacity: 1;
+        top: 100px;
+        left: 200px;
+        border-radius: 25%;
+        width: 400px;
+        height: 400px;
+    }
+}
+@keyframes fadeToTransparent{
+    to{
+        opacity: 0;
+    }
 }
