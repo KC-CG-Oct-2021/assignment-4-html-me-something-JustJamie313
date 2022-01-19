@@ -7,7 +7,7 @@
       <script src='./gallery.js'></script>
    </head>
    <body>
-      <h1 id="mainHeading"><img id='kccg' src='images/kccodergirl3.png' alt='KC Codergirl logo'> Original Art Gallery</h1>
+      <h1 id="mainHeading"><img id='kccg' src='images/kccodergirl3.png' alt='KC Codergirl logo'>Original Art Gallery</h1>
       <div class='container'>
          <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=gallery.length-1:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
          <main>
@@ -25,7 +25,7 @@
       </div>
       <img id='viewFinder' src='./images/viewfinder.png' alt='image of viewfinder toy' onclick='window.location=`./pages/viewFinder.html?index=${galleryIndex}`'/>
       <footer>
-         <p>Version: 1.3</p>
+         <p>Version: 1.4</p>
          &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
          <p>All images and poetry are my original works.  All Rights Reserved.</p>
       </footer>
