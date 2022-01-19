@@ -71,6 +71,7 @@ pre{
     margin-left: 10px;
     width: 650px;
     pointer-events: none;
+    z-index: 1;
 }
 .container{
     display: flex;
@@ -167,8 +168,9 @@ button:hover{
     background-repeat: repeat-y;
     position: absolute;
     align-self: flex-end;
-    margin-right: -17px;
-    margin-top: 20px;
+    margin-right: 5px;
+    margin-top: 8px;
+    z-index: 0;
 }
 #chain:hover{
     cursor: pointer;
