@@ -15,7 +15,7 @@
          <button id='decrease' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=gallery.length-1:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
          <main>
             <img id='light' src='images/galleryLight.png' alt='image of gallery light fixture'/>
-            <div id='chain' onclick='toggleLight();' onmousedown='growChain();' onmouseup='returnChain();' onmouseout='returnChain();'></div>
+            <span id='chain' onclick='toggleLight();' onmousedown='growChain();' onmouseup='returnChain();' onmouseout='returnChain();'></span>
             <article>
                <header>
                   <img id='galleryImage'/>
@@ -32,7 +32,7 @@
       </div>
       <img id='viewFinder' src='./images/viewfinder.png' alt='image of viewfinder toy' onclick='window.location=`./pages/viewFinder.html?index=${galleryIndex}`'/>
       <footer>
-         <p>Version: 1.8</p>
+         <p>Version: 1.9</p>
          &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
          <p>All images and poetry are my original works.  All Rights Reserved.</p>
       </footer>
