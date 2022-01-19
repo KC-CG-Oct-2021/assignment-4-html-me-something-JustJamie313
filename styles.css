@@ -60,6 +60,13 @@ pre{
     padding: 5px;
     display: none;
 }
+#light{
+    position: absolute;
+    margin-top: -30px;
+    margin-left: 10px;
+    width: 650px;
+    pointer-events: none;
+}
 .container{
     display: flex;
     flex-direction: row;
