@@ -2,6 +2,9 @@ body{
     margin: 8px;
     display: block;
     background-color: lightskyblue;
+    background-image: url('images/bgRose.png');
+    background-size: 125px;
+    background-repeat: repeat;
 }
 #mainHeading{
     color: red;
@@ -30,7 +33,7 @@ main{
 }
 
 footer{
-    color: gray;
+    color: black;
     font-size: 12px;
     text-align: center;
     margin-top: 10px;
