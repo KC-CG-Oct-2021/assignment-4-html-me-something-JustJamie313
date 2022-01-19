@@ -19,11 +19,11 @@
             <article>
                <header>
                   <img id='galleryImage'/>
-                  <!-- <p id="testP" class='nameplate'>
+                  <p id="testP" class='nameplate'>
                      <span id='artworkTitle' class='nameplateText' title=''></span>
                      <span id='artworkArtist' class='nameplateText' title=''></span>
-                  </p> -->
-                  <p id='detailsParagraph' class='funParagraph'></p>
+                  </p>
+                  <p class='funParagraph'></p>
                </header>
                <pre></pre>
             </article>
@@ -32,7 +32,7 @@
       </div>
       <img id='viewFinder' src='./images/viewfinder.png' alt='image of viewfinder toy' onclick='window.location=`./pages/viewFinder.html?index=${galleryIndex}`'/>
       <footer>
-         <p>Version: 1.10</p>
+         <p>Version: 1.11</p>
          &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
          <p>All images and poetry are my original works.  All Rights Reserved.</p>
       </footer>
@@ -45,7 +45,7 @@
             let image = document.querySelector('#galleryImage');
             let title = document.querySelector('#artworkTitle');
             let artist = document.querySelector('#artworkArtist');
-            let details = document.querySelector('#detailsParagraph');
+            let details = document.querySelector('.funParagraph');
             let preText = document.querySelector('pre');
             title.innerHTML = `"${gallery[index].name}"`;
             title.setAttribute('title',title.innerHTML);
