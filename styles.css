@@ -70,6 +70,7 @@ pre{
     margin-top: -30px;
     margin-left: 10px;
     width: 650px;
+    pointer-events: none;
 }
 .container{
     display: flex;
@@ -144,6 +145,7 @@ button:hover{
     color: rgb(1, 1, 32);
     opacity: 1;
     filter:alpha(opacity=40);
+    
 }
 .nameplateText:after{
     display: flex;
@@ -156,4 +158,18 @@ button:hover{
     color: white;
     opacity: 0.5;
     filter:alpha(opacity=40);
+    
+}
+#chain{
+    width: 10px;
+    height: 150px;
+    background-image: url('images/chain.png');
+    background-repeat: repeat-y;
+    position: absolute;
+    align-self: flex-end;
+    margin-right: -17px;
+    margin-top: 20px;
+}
+#chain:hover{
+    cursor: pointer;
 }

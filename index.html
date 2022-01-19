@@ -14,7 +14,8 @@
       <div class='container'>
          <button id='decrease' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=gallery.length-1:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
          <main>
-            <img id='light' src='images/galleryLight.png' alt='image of gallery light fixture' onclick='toggleLight();'/>
+            <img id='light' src='images/galleryLight.png' alt='image of gallery light fixture'/>
+            <span id='chain' onclick='toggleLight();' onmousedown='growChain();' onmouseup='returnChain();' onmouseout='returnChain();'></span>
             <article>
                <header>
                   <img id='galleryImage'/>
@@ -73,6 +74,14 @@
             } else {
                light.src = 'images/galleryLight.png';
             }
+         }
+         function growChain(){
+            let chain = document.querySelector('#chain');
+            chain.style.height = '180px';
+         }
+         function returnChain(){
+            let chain = document.querySelector('#chain');
+            chain.style.height = '150px';
          }
       </script>
    </body>
