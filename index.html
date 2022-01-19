@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>KC CoderGirl Original Art</title>
       <link rel='stylesheet' type='text/css' href='styles.css'/>
       <link rel='icon' type='image/x-icon' href='images/kccodergirl3.png'/>
@@ -10,24 +12,27 @@
       <h1 id="mainHeading"><img id='kccg' src='images/kccodergirl3.png' alt='KC Codergirl logo'>Original Art Gallery</h1>
       
       <div class='container'>
-         <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=gallery.length-1:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
+         <button id='decrease' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=gallery.length-1:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
          <main>
-            <img id='light' src='images/galleryLight.png'/>
+            <img id='light' src='images/galleryLight.png' alt='image of gallery light fixture'/>
+            <div id='chain' onclick='toggleLight();' onmousedown='growChain();' onmouseup='returnChain();' onmouseout='returnChain();'></div>
             <article>
                <header>
-                  <h2></h2>
                   <img id='galleryImage'/>
-                  <p id="testP" class='funParagraph'></p>
-                  <p id='detailsParagraph'></p>
+                  <p id="testP" class='nameplate'>
+                     <span id='artworkTitle' class='nameplateText' title=''></span>
+                     <span id='artworkArtist' class='nameplateText' title=''></span>
+                  </p>
+                  <p id='detailsParagraph' class='funParagraph'></p>
                </header>
                <pre></pre>
             </article>
          </main>
-         <button onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex === gallery.length-1)?galleryIndex=0:galleryIndex+=1;showImage(galleryIndex)'>&gt;</button>
+         <button  id='increase' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex === gallery.length-1)?galleryIndex=0:galleryIndex+=1;showImage(galleryIndex)'>&gt;</button>
       </div>
       <img id='viewFinder' src='./images/viewfinder.png' alt='image of viewfinder toy' onclick='window.location=`./pages/viewFinder.html?index=${galleryIndex}`'/>
       <footer>
-         <p>Version: 1.5</p>
+         <p>Version: 1.6</p>
          &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
          <p>All images and poetry are my original works.  All Rights Reserved.</p>
       </footer>
@@ -37,16 +42,18 @@
          setInterval(function(){randomizeBackground();},15000);
          showImage(galleryIndex);
          function showImage(index){
-            let title = document.querySelector('h2');
             let image = document.querySelector('#galleryImage');
-            let artist = document.querySelector('#testP');
+            let title = document.querySelector('#artworkTitle');
+            let artist = document.querySelector('#artworkArtist');
             let details = document.querySelector('#detailsParagraph');
             let preText = document.querySelector('pre');
-            title.innerHTML = gallery[index].name;
+            title.innerHTML = `"${gallery[index].name}"`;
+            title.setAttribute('title',title.innerHTML);
             image.setAttribute('class',gallery[index].class);
             image.setAttribute('src',`./images/${gallery[index].src}`);
             image.setAttribute('alt',gallery[index].alt);
-            artist.innerHTML = `Artist: ${gallery[index].artist}`;
+            artist.innerHTML = `${gallery[index].artist}`;
+            artist.setAttribute('title',artist.innerHTML);
             details.innerHTML = gallery[index].details;
             if(gallery[index].pre !== ''){
                preText.innerHTML = gallery[index].pre;
@@ -59,6 +66,22 @@
          function randomizeBackground(){
             let body = document.querySelector('body');
             body.style.backgroundColor = `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.25)`;
+         }
+         function toggleLight(){
+            let light = document.querySelector('#light');
+            if(light.src.includes('galleryLight')){
+               light.src = 'images/galleryNoLight.png';
+            } else {
+               light.src = 'images/galleryLight.png';
+            }
+         }
+         function growChain(){
+            let chain = document.querySelector('#chain');
+            chain.style.height = '180px';
+         }
+         function returnChain(){
+            let chain = document.querySelector('#chain');
+            chain.style.height = '150px';
          }
       </script>
    </body>

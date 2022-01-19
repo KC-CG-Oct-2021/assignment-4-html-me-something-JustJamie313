@@ -72,7 +72,7 @@ let gallery = [
        pre: ''
     },
     {
-       name: 'It <em>Must</em> Be Pretty',
+       name: 'It Must Be Pretty',
        class: 'portrait',
        src: '9.jpg',
        alt: 'Oil painting of flowers on cover of 3-ring binder.',
