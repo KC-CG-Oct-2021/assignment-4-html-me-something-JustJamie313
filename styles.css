@@ -139,12 +139,11 @@ button:hover{
     display: flex;
     position: absolute;
     width: 240px;
-    height: 60px;
-    margin-top: 1px;
-    margin-left: 1px;
+    margin-left: -1px;
+    margin-top: -1px;
     content: attr(title);
-    color: black;
-    opacity: 0.4;
+    color: rgb(1, 1, 32);
+    opacity: 1;
     filter:alpha(opacity=40);
     
 }
@@ -153,10 +152,11 @@ button:hover{
     position: absolute;
     width: 240px;
     height: 60px;
-    margin-top: -15px;
+    margin-top: -23px;
+    margin-left: 1px;
     content: attr(title);
     color: white;
-    opacity: 0.4;
+    opacity: 0.5;
     filter:alpha(opacity=40);
     
 }
