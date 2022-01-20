@@ -32,7 +32,7 @@
       </div>
       <img id='viewFinder' src='./images/viewfinder.png' alt='image of viewfinder toy' onclick='window.location=`./pages/viewFinder.html?index=${galleryIndex}`'/>
       <footer>
-         <p>Version: 1.13</p>
+         <p>Version: 1.14</p>
          &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
          <p>All images and poetry are my original works.  All Rights Reserved.</p>
       </footer>
@@ -69,8 +69,18 @@
          }
          function toggleLight(){
             let light = document.querySelector('#light');
+            let dButton = document.querySelector('#decrease');
+            let iButton = document.querySelector('#increase');
+            let frame = document.querySelector('#galleryImage');
+            let paper = document.querySelector('pre');
             if(light.src.includes('galleryLight')){
                light.src = 'images/galleryNoLight.png';
+               dButton.style.boxShadow = '-1px 1px 5px black';
+               dButton.style.textShadow = '-1px 1px 5px black';
+               iButton.style.boxShadow = '1px 1px 5px black';
+               iButton.style.textShadow = '1px 1px 5px black';
+               frame.style.boxShadow = '5px 5px 20px black, -5px 5px 20px black';
+               paper.style.boxShadow = '1px 1px 5px gray, -1px 1px 5px gray';
             } else {
                while(flashes<10){
                   setTimeout(function(){
@@ -79,6 +89,12 @@
                   flashes++;
                }
                light.src = 'images/galleryLight.png';
+               dButton.style.boxShadow = '-2px 3px 10px black';
+               dButton.style.textShadow = '-2px 3px 5px black';
+               iButton.style.boxShadow = '2px 3px 10px black';
+               iButton.style.textShadow = '2px 3px 5px black';
+               frame.style.boxShadow = '10px 15px 30px black, -10px 15px 30px black';
+               paper.style.boxShadow = '1px 1px 10px gray, -1px 1px 10px gray';
             }
          }
          function growChain(){
