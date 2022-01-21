@@ -32,7 +32,7 @@
       </div>
       <img id='viewFinder' src='./images/viewfinder.png' alt='image of viewfinder toy' onclick='window.location=`./pages/viewFinder.html?index=${galleryIndex}`'/>
       <footer>
-         <p>Version: 1.16</p>
+         <p>Version: 1.17</p>
          &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
          <p>All images and poetry are my original works.  All Rights Reserved.</p>
       </footer>
@@ -69,7 +69,7 @@
             body.style.backgroundColor = `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.25)`;
          }
          function toggleLight(){
-            let flickerElements = [document.querySelector('#light'),document.querySelector('#increase'),document.querySelector('#increase'),document.querySelector('#galleryImage'),document.querySelector('pre'),document.querySelector('#chain')];
+            let flickerElements = [document.querySelector('#light'),document.querySelector('#decrease'),document.querySelector('#increase'),document.querySelector('#galleryImage'),document.querySelector('pre'),document.querySelector('#chain')];
             if(!flickerElements[0].classList.contains('flicker')){
                for(let a=0;a<flickerElements.length;a++){
                   flickerElements[a].classList.add('flicker');
