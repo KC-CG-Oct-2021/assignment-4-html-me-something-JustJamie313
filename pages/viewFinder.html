@@ -9,11 +9,11 @@
     <body onkeydown='if(event.key === "ArrowUp"){look(0);}if(event.key === "ArrowRight"){look(1);}'>
         <div class='containerBG fade transparent'></div>
         <div class='container' onmousedown='if(window.ontouchend==undefined&&navigator.maxTouchPoints==0){look(event.button)}'>
-            <img id='leftEye' class='fade full'/>
+            <img id='leftEye' class='eye fade full'/>
             <img id='leftDisc' class='disc fade transparent'/>
             <img id='centerDisc' class='disc fade transparent'/>
             <img id='rightDisc' class='disc fade transparent'/>
-            <img id='rightEye' class='fade full'/>
+            <img id='rightEye' class='eye fade full'/>
         </div>
         <div class='buttonBox'>
             <button id='view' onclick='look(0);'>View</button>
@@ -25,7 +25,7 @@
             <h5>Touch-Screen Controls</h5>
             <p>
                 Touch the ViewFinder with <b>ONE FINGER</b> to View or Stop Viewing the image(or use on-screen controls).<br/>
-                Touch the ViewFinder with <b>TWO FINGERS</b> to advance to the next image (this will sometimes cause the View/Stop Viewing process to run if both fingers don't touch at exactly the same time).
+                Use the on-screen <b>Next</b> button to advance to the next image.
             </p>
             <h5>Keyboard Controls</h5>
             <p>
@@ -44,42 +44,26 @@
             </p>
         </div>   
         <footer>
-            <p>Version: 2.16</p>
+            <p>Version: 2.17</p>
             &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
             <p>All images and poetry are my original works.  All Rights Reserved.</p>
          </footer>
     </body>
     <script>
-        document.querySelector('.container').addEventListener('touchstart',function(e){
-            let changed = false;
-            switch(e.touches.length){
-                case 2:
-                    look(1);
-                    changed = true;
-                break;
-                default:
-                    if(!changed){
-                        look(0);
-                    }
-            }
-        });
         let index = Number(location.href.substring(location.href.indexOf('=')+1));
         if(!index){index=Math.floor(Math.random()*gallery.length);}
-        let leftEye = document.querySelector('#leftEye');
-        let rightEye = document.querySelector('#rightEye');
+        let eyes = document.querySelectorAll('.eye');
         let discs = document.querySelectorAll('.disc');
         loadImages(index);
         function loadImages(index){
-            discs[0].src = `../images/${index+3>gallery.length-1?gallery[index+3-(gallery.length)].src:gallery[index+3].src}`;
-            discs[0].alt = `${index+3>gallery.length-1?gallery[index+3-(gallery.length)].alt:gallery[index+3].alt}`;
-            discs[1].src = `../images/${index+2>gallery.length-1?gallery[index+2-(gallery.length)].src:gallery[index+2].src}`;
-            discs[1].alt = `${index+2>gallery.length-1?gallery[index+2-(gallery.length)].alt:gallery[index+2].alt}`;
-            discs[2].src = `../images/${index+1>gallery.length-1?gallery[index+1-(gallery.length)].src:gallery[index+1].src}`;
-            discs[2].alt = `${index+1>gallery.length-1?gallery[index+1-(gallery.length)].alt:gallery[index+1].alt}`;
-            leftEye.src = `../images/${gallery[index].src}`;
-            leftEye.alt = `${gallery[index].alt}`;
-            rightEye.src = `../images/${gallery[index].src}`;
-            rightEye.alt = `${gallery[index].alt}`;
+            for(let a=0;a<discs.length;a++){
+                discs[a].src = `../images/${(index+(discs.length-a))>gallery.length-1?gallery[(index+(discs.length-a))-gallery.length].src:gallery[index+(discs.length-a)].src}`;
+                discs[a].alt = `${index+(discs.length-a)>gallery.length-1?gallery[(index+(discs.length-a))-(gallery.length)].alt:gallery[index+(discs.length-a)].alt}`;
+            }
+            for(let a=0;a<eyes.length;a++){
+                eyes[a].src = `../images/${gallery[index].src}`;
+                eyes[a].alt = `${gallery[index].alt}`;
+            }
         }
         function look(button){
             switch(button){
