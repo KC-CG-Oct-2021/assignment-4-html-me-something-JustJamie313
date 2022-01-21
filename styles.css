@@ -5,17 +5,26 @@ body{
     background-image: url('images/bgRose.png');
     background-size: 125px;
     background-repeat: repeat;
-    animation: changeBG 60s infinite alternate both;
+    animation: changeBG 90s infinite alternate both;
 }
 @keyframes changeBG{
-    25%{
+    15%{
+        background-color: rgba(255,0,0,0.25);
+    }
+    30%{
+        background-color: rgba(255,255,0,0.25);
+    }
+    45%{
+        background-color: rgba(0,255,0,0.25);
+    }
+    60%{
         background-color: rgba(0,255,255,0.25);
     }
-    50%{
-        background-color: rgba(255,0,255,0.25);
-    }
     75%{
-        background-color: rgba(255,255,0,0.25);
+        background-color: rgba(0,0,255,0.25);
+    }
+    90%{
+        background-color: rgba(255,0,255,0.25);
     }
     100%{
         background-color: rgba(0,0,0,0.25);
