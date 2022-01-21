@@ -42,7 +42,7 @@
             </p>
         </div>   
         <footer>
-            <p>Version: 3.2</p>
+            <p>Version: 3.3</p>
             &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
             <p>All images and poetry are my original works.  All Rights Reserved.</p>
          </footer>
@@ -101,7 +101,7 @@
         }
         function showControls(){
             let controls = document.querySelector('.controls');
-            if(controls.style.display === 'none'){
+            if(controls.style.display === 'none' || !controls.style.display){
                 controls.style.display = 'flex';
             } else {
                 controls.style.display = 'none';
