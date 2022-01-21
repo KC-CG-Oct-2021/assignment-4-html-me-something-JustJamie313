@@ -1,8 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=0.5">
+      <title>KC CoderGirl Original Art</title>
+      <link rel='stylesheet' type='text/css' href='styles.css'/>
+      <link rel='icon' type='image/x-icon' href='images/kccodergirl3.png'/>
+      <script src='./gallery.js'></script>
    </head>
    <body>
-      <!-- Write your HTML in this file! -->
+      <h1 id="mainHeading"><img id='kccg' src='images/kccodergirl3.png' alt='KC Codergirl logo'>Original Art Gallery</h1>
+      <div class='container'>
+         <button id='decrease' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=gallery.length-1:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
+         <main>
+            <img id='light' alt='image of gallery light fixture'/>
+            <span id='chain' onclick='flashes = 0;toggleLight();' onmousedown='growChain();' onmouseup='returnChain();' onmouseout='returnChain();'></span>
+            <article>
+               <header>
+                  <img id='galleryImage'/>
+                  <p class='nameplate'>
+                     <span id='artworkTitle' class='nameplateText' title=''></span>
+                     <span id='artworkArtist' class='nameplateText' title=''></span>
+                  </p>
+                  <p id="testP" class='funParagraph'></p>
+               </header>
+               <pre></pre>
+            </article>
+         </main>
+         <button  id='increase' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex === gallery.length-1)?galleryIndex=0:galleryIndex+=1;showImage(galleryIndex)'>&gt;</button>
+      </div>
+      <img id='viewFinder' src='./images/viewfinder.png' alt='image of viewfinder toy' onclick='window.location=`./pages/viewFinder.html?index=${galleryIndex}`'/>
+      <footer>
+         <p>Version: 1.20</p>
+         &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
+         <p>All images and poetry are my original works.  All Rights Reserved.</p>
+      </footer>
+      <script>
+         let flashes;
+         let galleryIndex = Math.floor(Math.random()*gallery.length);
+         showImage(galleryIndex);
+         function showImage(index){
+            let image = document.querySelector('#galleryImage');
+            let title = document.querySelector('#artworkTitle');
+            let artist = document.querySelector('#artworkArtist');
+            let details = document.querySelector('.funParagraph');
+            let preText = document.querySelector('pre');
+            title.innerHTML = `"${gallery[index].name}"`;
+            title.setAttribute('title',title.innerHTML);
+            image.setAttribute('class',gallery[index].class);
+            image.setAttribute('src',`./images/${gallery[index].src}`);
+            image.setAttribute('alt',gallery[index].alt);
+            artist.innerHTML = `${gallery[index].artist}`;
+            artist.setAttribute('title',artist.innerHTML);
+            details.innerHTML = gallery[index].details;
+            if(gallery[index].pre !== ''){
+               preText.innerHTML = gallery[index].pre;
+               preText.style.display = 'block';
+            } else {
+               preText.innerHTML = '';
+               preText.style.display = 'none';
+            }
+         }
+         function toggleLight(){
+            let flickerElements = [document.querySelector('#light'),document.querySelector('#decrease'),document.querySelector('#increase'),document.querySelector('#galleryImage'),document.querySelector('pre'),document.querySelector('#chain')];
+            if(!flickerElements[0].classList.contains('flicker')){
+               for(let a=0;a<flickerElements.length;a++){
+                  flickerElements[a].classList.add('flicker');
+               }
+            } else {
+               while(flashes<10){
+                  setTimeout(function(){
+                     toggleLight();
+                  },Math.floor(Math.random()*1000));
+                  flashes++;
+               };
+               for(let a=0;a<flickerElements.length;a++){
+                  flickerElements[a].classList.remove('flicker');
+               }
+            }
+         }
+         function growChain(){
+            let chain = document.querySelector('#chain');
+            chain.style.height = '180px';
+         }
+         function returnChain(){
+            let chain = document.querySelector('#chain');
+            chain.style.height = '150px';
+         }
+      </script>
    </body>
 </html>
