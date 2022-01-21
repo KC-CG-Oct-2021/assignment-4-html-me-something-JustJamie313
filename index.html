@@ -14,16 +14,16 @@
       <div class='container'>
          <button id='decrease' onmousedown='this.classList.add("clicked");' onmouseup='this.classList.remove("clicked");' onclick='(galleryIndex===0)?galleryIndex=gallery.length-1:galleryIndex -= 1;showImage(galleryIndex);'>&lt;</button>
          <main>
-            <img id='light' src='images/galleryLight.png' alt='image of gallery light fixture'/>
+            <img id='light' alt='image of gallery light fixture'/>
             <span id='chain' onclick='flashes = 0;toggleLight();' onmousedown='growChain();' onmouseup='returnChain();' onmouseout='returnChain();'></span>
             <article>
                <header>
                   <img id='galleryImage'/>
-                  <p id="testP" class='nameplate'>
+                  <p class='nameplate'>
                      <span id='artworkTitle' class='nameplateText' title=''></span>
                      <span id='artworkArtist' class='nameplateText' title=''></span>
                   </p>
-                  <p class='funParagraph'></p>
+                  <p id="testP" class='funParagraph'></p>
                </header>
                <pre></pre>
             </article>
@@ -32,12 +32,13 @@
       </div>
       <img id='viewFinder' src='./images/viewfinder.png' alt='image of viewfinder toy' onclick='window.location=`./pages/viewFinder.html?index=${galleryIndex}`'/>
       <footer>
-         <p>Version: 1.15</p>
+         <p>Version: 1.16</p>
          &copy; <script>document.write(new Date().getFullYear())</script> <b>&#183;</b> Jamie Miller ~ All Rights Reserved.
          <p>All images and poetry are my original works.  All Rights Reserved.</p>
       </footer>
       <script>
          let flashes;
+         let light = true;
          let galleryIndex = Math.floor(Math.random()*gallery.length);
          setInterval(function(){randomizeBackground();},15000);
          showImage(galleryIndex);
@@ -68,36 +69,21 @@
             body.style.backgroundColor = `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},0.25)`;
          }
          function toggleLight(){
-            let light = document.querySelector('#light');
-            let dButton = document.querySelector('#decrease');
-            let iButton = document.querySelector('#increase');
-            let frame = document.querySelector('#galleryImage');
-            let paper = document.querySelector('pre');
-            let chain = document.querySelector('#chain');
-            if(light.src.includes('galleryLight')){
-               light.src = 'images/galleryNoLight.png';
-               dButton.style.boxShadow = '-1px 1px 5px black';
-               dButton.style.textShadow = '-1px 1px 5px black';
-               iButton.style.boxShadow = '1px 1px 5px black';
-               iButton.style.textShadow = '1px 1px 5px black';
-               frame.style.boxShadow = '5px 5px 20px black, -5px 5px 20px black';
-               paper.style.boxShadow = '1px 1px 5px gray, -1px 1px 5px gray';
-               chain.style.boxShadow = 'box-shadow: 0 5px 5px gray';
+            let flickerElements = [document.querySelector('#light'),document.querySelector('#increase'),document.querySelector('#increase'),document.querySelector('#galleryImage'),document.querySelector('pre'),document.querySelector('#chain')];
+            if(!flickerElements[0].classList.contains('flicker')){
+               for(let a=0;a<flickerElements.length;a++){
+                  flickerElements[a].classList.add('flicker');
+               }
             } else {
                while(flashes<10){
                   setTimeout(function(){
                      toggleLight();
                   },Math.floor(Math.random()*1000));
                   flashes++;
+               };
+               for(let a=0;a<flickerElements.length;a++){
+                  flickerElements[a].classList.remove('flicker');
                }
-               light.src = 'images/galleryLight.png';
-               dButton.style.boxShadow = '-2px 3px 10px black';
-               dButton.style.textShadow = '-2px 3px 5px black';
-               iButton.style.boxShadow = '2px 3px 10px black';
-               iButton.style.textShadow = '2px 3px 5px black';
-               frame.style.boxShadow = '10px 15px 30px black, -10px 15px 30px black';
-               paper.style.boxShadow = '1px 1px 10px gray, -1px 1px 10px gray';
-               chain.style.boxShadow = 'box-shadow: 0 10px 10px gray';
             }
          }
          function growChain(){
