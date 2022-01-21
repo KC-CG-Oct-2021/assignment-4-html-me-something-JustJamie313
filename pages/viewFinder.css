@@ -1,9 +1,15 @@
 body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: left;
     background: white;
 }
 .container{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: black;
     border-radius: 25%;
     width: 780px !important;
@@ -31,12 +37,12 @@ body{
     opacity: 0.25;
 }
 #leftEye{
-    left: 77px;
-    top: 242px;
+    margin-left: -235px;
+    margin-top: 37px;
 }
 #rightEye{
-    top: 243px;
-    left: 547px;
+    margin-left: 235px;
+    margin-top: 37px;
 }
 .disc{
     display: block;
@@ -47,19 +53,19 @@ body{
 }
 #leftDisc{
     transform: rotateZ(45deg);
-    left: 263px;
-    top: 83px;
+    margin-left: -100px;
+    margin-top: -175px;
     
 }
 #centerDisc{
     transform: rotateZ(90deg);
-    left: 370px;
-    top: 43px;
+    margin-left: 9px;
+    margin-top: -211px;
 }
 #rightDisc{
     transform: rotateZ(135deg);
-    left: 472px;
-    top: 80px;
+    margin-left: 105px;
+    margin-top: -179px;
 }
 p{
     margin: 0px;
@@ -148,8 +154,8 @@ button:hover{
 @keyframes transformEyes{
     to{
         opacity: 1;
-        top: 100px;
-        left: 200px;
+        margin-top: 0px;
+        margin-left: 0px;
         border-radius: 25%;
         width: 400px;
         height: 400px;
