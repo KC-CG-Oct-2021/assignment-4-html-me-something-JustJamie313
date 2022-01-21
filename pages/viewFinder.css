@@ -3,7 +3,25 @@ body{
     flex-direction: column;
     align-items: center;
     text-align: left;
-    background: white;
+    background-color: lightskyblue;
+    background-image: url('../images/bgRose.png');
+    background-size: 125px;
+    background-repeat: repeat;
+    animation: changeBG 60s infinite alternate both;
+}
+@keyframes changeBG{
+    25%{
+        background-color: rgba(0,255,255,0.25);
+    }
+    50%{
+        background-color: rgba(255,0,255,0.25);
+    }
+    75%{
+        background-color: rgba(255,255,0,0.25);
+    }
+    100%{
+        background-color: rgba(0,0,0,0.25);
+    }
 }
 .container{
     display: flex;
@@ -80,7 +98,6 @@ h5{
     font-size: 18px;
 }
 footer{
-    color: gray;
     font-size: 12px;
     text-align: center;
     margin-top: 10px;
